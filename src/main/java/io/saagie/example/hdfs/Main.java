@@ -18,15 +18,15 @@ public class Main {
    public static void main(String[] args) throws Exception {
       //HDFS URI
 
-      if (args.length<1) {
-         logger.severe("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
-         System.err.println("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
-         System.exit(128);
-      }
-      String hdfsuri = args[0];
+//      if (args.length<1) {
+//         logger.severe("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
+//         System.err.println("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
+//         System.exit(128);
+//      }
+      String hdfsuri = "hdfs://localhost:9000";
 
-      String path="/user/hdfs/example/hdfs/";
-      String fileName="hello.csv";
+      String path="/new_folder";
+      String fileName="myfile.txt";
       String fileContent="hello;world";
 
       // ====== Init HDFS File System Object
@@ -37,7 +37,7 @@ public class Main {
       conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
       conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
       // Set HADOOP user
-      System.setProperty("HADOOP_USER_NAME", "hdfs");
+      System.setProperty("HADOOP_USER_NAME", "teckchun");
       System.setProperty("hadoop.home.dir", "/");
       //Get the filesystem - HDFS
       FileSystem fs = FileSystem.get(URI.create(hdfsuri), conf);
